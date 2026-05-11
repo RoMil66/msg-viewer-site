@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSG Viewer — Outlook .msg Dateien öffnen auf dem Mac</title>
     <meta name="description" content="MSG Viewer öffnet Outlook .msg Dateien direkt auf dem Mac — ohne Microsoft Outlook, ohne Abo, ohne Cloud.">
+    <meta id="meta-title-en" name="x-title-en" content="MSG Viewer — Open Outlook .msg files on your Mac">
+    <meta id="meta-desc-en" name="x-desc-en" content="MSG Viewer opens Outlook .msg files directly on your Mac — no Microsoft Outlook, no subscription, no cloud.">
     <style>
         :root {
             --bg: #fbfbfd; --bg-alt: #f5f5f7; --text: #1d1d1f; --text2: #6e6e73;
@@ -142,6 +144,14 @@
             .hero .tagline { font-size: 17px; }
             .features h2, .privacy-section h2, .cta-bottom h2 { font-size: 28px; }
         }
+        .lang-toggle {
+            background: var(--bg-alt); border: 1px solid var(--card-border);
+            color: var(--text2); padding: 4px 10px; border-radius: 6px;
+            font-size: 12px; cursor: pointer; font-family: inherit;
+            margin-left: 16px; transition: all 0.2s;
+        }
+        .lang-toggle:hover { color: var(--text); border-color: var(--text2); }
+        [lang-content]:not(.active-lang) { display: none; }
     </style>
 </head>
 <body>
@@ -150,9 +160,12 @@
     <div class="nav-inner">
         <a href="#" class="nav-brand">MSG Viewer</a>
         <div class="nav-links">
-            <a href="#features">Features</a>
-            <a href="#privacy">Datenschutz</a>
+            <a href="#features" lang-content="de" class="active-lang">Features</a>
+            <a href="#features" lang-content="en">Features</a>
+            <a href="#privacy" lang-content="de" class="active-lang">Datenschutz</a>
+            <a href="#privacy" lang-content="en">Privacy</a>
             <a href="support.html">Support</a>
+            <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">EN</button>
         </div>
     </div>
 </nav>
@@ -164,9 +177,12 @@
         </svg>
     </div>
     <h1>MSG Viewer</h1>
-    <p class="tagline">Outlook .msg Dateien öffnen auf dem Mac — ohne Microsoft Outlook, ohne Abo, ohne Cloud.</p>
-    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX">Im Mac App Store laden</a>
-    <p class="price">4,99 € · macOS 13 Ventura oder neuer</p>
+    <p class="tagline" lang-content="de" class="active-lang">Outlook .msg Dateien öffnen auf dem Mac — ohne Microsoft Outlook, ohne Abo, ohne Cloud.</p>
+    <p class="tagline" lang-content="en">Open Outlook .msg files on your Mac — no Microsoft Outlook, no subscription, no cloud.</p>
+    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX" lang-content="de">Im Mac App Store laden</a>
+    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX" lang-content="en">Download on the Mac App Store</a>
+    <p class="price" lang-content="de" class="active-lang">4,99 € · macOS 13 Ventura oder neuer</p>
+    <p class="price" lang-content="en">€4.99 · macOS 13 Ventura or later</p>
 </section>
 
 <section class="screenshot-section" id="screenshot">
@@ -174,18 +190,24 @@
         <img id="screenshot-img" src="screenshots/Screenshot-1.png" alt="MSG Viewer — Nachrichteninhalt anzeigen" loading="lazy">
     </div>
     <div class="screenshot-tabs">
-        <button class="active" onclick="switchScreenshot(1, this)">Body</button>
-        <button onclick="switchScreenshot(2, this)">Headers</button>
-        <button onclick="switchScreenshot(3, this)">Anhänge</button>
-        <button onclick="switchScreenshot(4, this)">Raw Data</button>
-        <button onclick="switchScreenshot(5, this)">Light Mode</button>
+        <button class="active" onclick="switchScreenshot(1, this)" lang-content="de">Body</button>
+        <button onclick="switchScreenshot(2, this)" lang-content="de">Headers</button>
+        <button onclick="switchScreenshot(3, this)" lang-content="de">Anhänge</button>
+        <button onclick="switchScreenshot(4, this)" lang-content="de">Raw Data</button>
+        <button onclick="switchScreenshot(5, this)" lang-content="de">Light Mode</button>
+        <button class="active" onclick="switchScreenshot(1, this)" lang-content="en">Body</button>
+        <button onclick="switchScreenshot(2, this)" lang-content="en">Headers</button>
+        <button onclick="switchScreenshot(3, this)" lang-content="en">Attachments</button>
+        <button onclick="switchScreenshot(4, this)" lang-content="en">Raw Data</button>
+        <button onclick="switchScreenshot(5, this)" lang-content="en">Light Mode</button>
     </div>
 </section>
 
 <section class="features" id="features">
     <div class="features-inner">
-        <h2>Alles, was Sie brauchen.</h2>
-        <div class="feature-grid">
+        <h2 lang-content="de" class="active-lang">Alles, was Sie brauchen.</h2>
+        <h2 lang-content="en">Everything you need.</h2>
+        <div class="feature-grid" lang-content="de" class="active-lang">
             <div class="feature-card">
                 <div class="feature-icon">📨</div>
                 <h3>Doppelklick im Finder</h3>
@@ -217,13 +239,47 @@
                 <p>Passt sich automatisch an Ihre macOS-Einstellung an — oder wechseln Sie manuell über das Menü.</p>
             </div>
         </div>
+        <div class="feature-grid" lang-content="en">
+            <div class="feature-card">
+                <div class="feature-icon">📨</div>
+                <h3>Double-click in Finder</h3>
+                <p>Open .msg files with a double-click — just like any other file on your Mac.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👁️</div>
+                <h3>Quick Look</h3>
+                <p>Press Space to instantly preview an email — right in Finder, without opening the app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📎</div>
+                <h3>Save Attachments</h3>
+                <p>See all attachments at a glance. Save them individually with a single click.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📁</div>
+                <h3>Open Folders</h3>
+                <p>Load an entire folder of .msg files at once. Search, filter, and sort your emails.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📄</div>
+                <h3>Export &amp; Print</h3>
+                <p>Export emails as text or PDF. Print directly from the app with ⌘P.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌗</div>
+                <h3>Dark Mode &amp; Light Mode</h3>
+                <p>Automatically adapts to your macOS setting — or switch manually via the menu.</p>
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="privacy-section" id="privacy">
-    <h2>100 % offline. 100 % privat.</h2>
-    <p class="subtitle">MSG Viewer sendet keine Daten ins Internet. Keine Analyse, kein Tracking, keine Cloud. Ihre E-Mails bleiben auf Ihrem Mac.</p>
-    <div class="privacy-badges">
+    <h2 lang-content="de" class="active-lang">100 % offline. 100 % privat.</h2>
+    <h2 lang-content="en">100% offline. 100% private.</h2>
+    <p class="subtitle" lang-content="de" class="active-lang">MSG Viewer sendet keine Daten ins Internet. Keine Analyse, kein Tracking, keine Cloud. Ihre E-Mails bleiben auf Ihrem Mac.</p>
+    <p class="subtitle" lang-content="en">MSG Viewer sends no data to the internet. No analytics, no tracking, no cloud. Your emails stay on your Mac.</p>
+    <div class="privacy-badges" lang-content="de" class="active-lang">
         <div class="privacy-badge">
             <div class="icon">🔒</div>
             <div class="label">Kein Netzwerk</div>
@@ -245,15 +301,39 @@
             <div class="desc">Läuft isoliert in der macOS Sandbox</div>
         </div>
     </div>
+    <div class="privacy-badges" lang-content="en">
+        <div class="privacy-badge">
+            <div class="icon">🔒</div>
+            <div class="label">No Network</div>
+            <div class="desc">No servers, no API calls</div>
+        </div>
+        <div class="privacy-badge">
+            <div class="icon">🚫</div>
+            <div class="label">No Tracking</div>
+            <div class="desc">No analytics SDKs, no cookies</div>
+        </div>
+        <div class="privacy-badge">
+            <div class="icon">🗑️</div>
+            <div class="label">No Storage</div>
+            <div class="desc">Nothing is cached or stored</div>
+        </div>
+        <div class="privacy-badge">
+            <div class="icon">🛡️</div>
+            <div class="label">App Sandbox</div>
+            <div class="desc">Runs isolated in the macOS sandbox</div>
+        </div>
+    </div>
 </section>
 
 <section class="requirements">
     <div class="requirements-inner">
-        <h2>Systemanforderungen</h2>
+        <h2 lang-content="de" class="active-lang">Systemanforderungen</h2>
+        <h2 lang-content="en">System Requirements</h2>
         <div class="req-list">
             <div class="req-item">
                 <div class="val">macOS 13+</div>
-                <div class="lbl">Ventura oder neuer</div>
+                <div class="lbl" lang-content="de" class="active-lang">Ventura oder neuer</div>
+                <div class="lbl" lang-content="en">Ventura or later</div>
             </div>
             <div class="req-item">
                 <div class="val">Apple Silicon &amp; Intel</div>
@@ -261,33 +341,74 @@
             </div>
             <div class="req-item">
                 <div class="val">&lt; 5 MB</div>
-                <div class="lbl">App-Größe</div>
+                <div class="lbl" lang-content="de" class="active-lang">App-Größe</div>
+                <div class="lbl" lang-content="en">App Size</div>
             </div>
         </div>
     </div>
 </section>
 
 <section class="cta-bottom">
-    <h2>Jetzt .msg Dateien öffnen.</h2>
-    <p class="sub">Kein Outlook. Kein Abo. Einfach Doppelklick.</p>
-    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX">Im Mac App Store laden</a>
+    <h2 lang-content="de" class="active-lang">Jetzt .msg Dateien öffnen.</h2>
+    <h2 lang-content="en">Open .msg files now.</h2>
+    <p class="sub" lang-content="de" class="active-lang">Kein Outlook. Kein Abo. Einfach Doppelklick.</p>
+    <p class="sub" lang-content="en">No Outlook. No subscription. Just double-click.</p>
+    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX" lang-content="de">Im Mac App Store laden</a>
+    <a class="cta" href="https://apps.apple.com/app/msg-viewer/idXXXXXXXXXX" lang-content="en">Download on the Mac App Store</a>
 </section>
 
 <footer>
     <div>
-        <a href="privacy.html">Datenschutz / Privacy</a>
+        <a href="privacy.html" lang-content="de" class="active-lang">Datenschutz / Privacy</a>
+        <a href="privacy.html" lang-content="en">Privacy Policy</a>
         <a href="support.html">Support</a>
-        <a href="mailto:MsgViewer4Mac@outlook.com">Kontakt</a>
+        <a href="mailto:MsgViewer4Mac@outlook.com" lang-content="de" class="active-lang">Kontakt</a>
+        <a href="mailto:MsgViewer4Mac@outlook.com" lang-content="en">Contact</a>
     </div>
-    <div class="copy">© 2025 Robert Milberger. Alle Rechte vorbehalten.</div>
+    <div class="copy" lang-content="de" class="active-lang">© 2025 Robert Milberger. Alle Rechte vorbehalten.</div>
+    <div class="copy" lang-content="en">© 2025 Robert Milberger. All rights reserved.</div>
 </footer>
 
 <script>
+var currentLang = 'de';
+
+function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[lang-content]').forEach(function(el) {
+        el.classList.toggle('active-lang', el.getAttribute('lang-content') === lang);
+    });
+    document.getElementById('lang-btn').textContent = lang === 'de' ? 'EN' : 'DE';
+    document.documentElement.lang = lang;
+    if (lang === 'en') {
+        document.title = 'MSG Viewer — Open Outlook .msg files on your Mac';
+        document.querySelector('meta[name="description"]').content =
+            'MSG Viewer opens Outlook .msg files directly on your Mac — no Microsoft Outlook, no subscription, no cloud.';
+    } else {
+        document.title = 'MSG Viewer — Outlook .msg Dateien öffnen auf dem Mac';
+        document.querySelector('meta[name="description"]').content =
+            'MSG Viewer öffnet Outlook .msg Dateien direkt auf dem Mac — ohne Microsoft Outlook, ohne Abo, ohne Cloud.';
+    }
+}
+
+function toggleLang() {
+    setLang(currentLang === 'de' ? 'en' : 'de');
+}
+
 function switchScreenshot(num, btn) {
     document.getElementById('screenshot-img').src = 'screenshots/Screenshot-' + num + '.png';
-    document.querySelectorAll('.screenshot-tabs button').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.screenshot-tabs button[lang-content="' + currentLang + '"]').forEach(function(b) {
+        b.classList.remove('active');
+    });
     btn.classList.add('active');
 }
+
+// Auto-detect browser language
+(function() {
+    var browserLang = (navigator.language || navigator.userLanguage || 'de').toLowerCase();
+    if (!browserLang.startsWith('de')) {
+        setLang('en');
+    }
+})();
 </script>
 
 </body>
